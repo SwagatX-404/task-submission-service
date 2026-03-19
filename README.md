@@ -1,6 +1,15 @@
 ## TASK SUBMISSION SERVICE FOR TASK MANAGEMNET - MICROSERVICE 3
 
 
+## Tech Stack
+- Java 17+
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Hibernate
+- MySQL
+- Maven
+- Lombok
 
 ## Database Configuration 
 - [application.yaml] file
@@ -20,3 +29,12 @@ spring:
     password: your_password
     driver-class-name: com.mysql.cj.jdbc.Driver
 ```
+
+## 👤 Author
+
+**Swagat Murmu**  
+*Master of Computer Applications (MCA)*
+- **Primary Skills:** 
+  - **Backend:** Java & Spring Boot
+  - **Frontend:** React & JavaScript
+  - **Database:** SQL
