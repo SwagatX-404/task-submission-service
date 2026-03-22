@@ -42,16 +42,22 @@ public class SubmissionServiceImpl implements SubmissionService {
 
     @Override
     public List<Submission> getAllTaskSubmissions() {
-        return List.of();
+        return submissionRepository.findAll();
     }
 
     @Override
     public List<Submission> getTaskSubmissionByTaskId(Long taskId) {
-        return List.of();
-    }
+        return submissionRepository.findByTaskId(taskId);    }
 
     @Override
     public Submission acceptDeclineSubmission(Long id, String status) throws Exception {
-        return null;
+        Submission submission = getTaskSubmissionById(id);
+        submission.setStatus(status);
+
+        if(status.equalsIgnoreCase("ACCEPT")){
+            taskService.completeTask(submission.getTaskId());
+
+        }
+        return submissionRepository.save(submission);
     }
 }
