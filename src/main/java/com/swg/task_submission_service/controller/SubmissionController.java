@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/submissions")
 public class SubmissionController {
@@ -44,6 +46,17 @@ public class SubmissionController {
     ) throws  Exception{
         UserDto user = userService.getUserProfile(jwt);
         Submission submission = submissionService.getTaskSubmissionById(id);
+        return new ResponseEntity<>(submission, HttpStatus.CREATED);
+    }
+
+    @GetMapping( "/{id}")
+    public ResponseEntity<List<Submission>> getAllSubmissions (
+
+            @RequestHeader ("Authorization") String jwt
+
+    ) throws  Exception{
+        UserDto user = userService.getUserProfile(jwt);
+        List<Submission> submission = submissionService.getAllTaskSubmissions();
         return new ResponseEntity<>(submission, HttpStatus.CREATED);
     }
 
