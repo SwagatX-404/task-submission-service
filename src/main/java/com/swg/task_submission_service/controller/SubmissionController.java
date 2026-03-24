@@ -60,5 +60,16 @@ public class SubmissionController {
         return new ResponseEntity<>(submission, HttpStatus.CREATED);
     }
 
+    @GetMapping( "/task/{taskId}")
+    public ResponseEntity<List<Submission>> getAllSubmissions (
+            @RequestHeader Long taskId,
+            @RequestHeader ("Authorization") String jwt
+
+    ) throws  Exception{
+        UserDto user = userService.getUserProfile(jwt);
+        List<Submission> submission = submissionService.getTaskSubmissionsByTaskId(taskId);
+        return new ResponseEntity<>(submission, HttpStatus.CREATED);
+    }
+
 
 }
