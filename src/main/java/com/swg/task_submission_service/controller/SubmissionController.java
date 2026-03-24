@@ -38,7 +38,7 @@ public class SubmissionController {
         return new ResponseEntity<>(submission, HttpStatus.CREATED);
     }
 
-    @GetMapping( "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Submission> getSubmissionById (
             @PathVariable Long id,
              @RequestHeader ("Authorization") String jwt
@@ -49,7 +49,7 @@ public class SubmissionController {
         return new ResponseEntity<>(submission, HttpStatus.CREATED);
     }
 
-    @GetMapping( "/{id}")
+    @GetMapping()
     public ResponseEntity<List<Submission>> getAllSubmissions (
 
             @RequestHeader ("Authorization") String jwt
@@ -61,8 +61,8 @@ public class SubmissionController {
     }
 
     @GetMapping( "/task/{taskId}")
-    public ResponseEntity<List<Submission>> getAllSubmissions (
-            @RequestHeader Long taskId,
+    public ResponseEntity<List<Submission>> getSubmissionsByTaskId (
+            @PathVariable Long taskId,
             @RequestHeader ("Authorization") String jwt
 
     ) throws  Exception{
@@ -71,5 +71,15 @@ public class SubmissionController {
         return new ResponseEntity<>(submission, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Submission> acceptDeclineSubmission(
+            @PathVariable Long id,
+            @RequestParam("status") String status,
+            @RequestHeader ("Authorization") String jwt
+    ) throws Exception {
+        UserDto user = userService.getUserProfile(jwt);
+        Submission submission = submissionService.acceptDeclineSubmission(id, status);
+        return new ResponseEntity<>(submission, HttpStatus.OK);
+}
 
 }
