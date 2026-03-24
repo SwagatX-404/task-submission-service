@@ -46,7 +46,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public List<Submission> getTaskSubmissionByTaskId(Long taskId) {
+    public List<Submission> getTaskSubmissionsByTaskId(Long taskId) {
         return submissionRepository.findByTaskId(taskId);    }
 
     @Override
