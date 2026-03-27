@@ -28,6 +28,18 @@ spring:
     username: root
     password: your_password
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+    eureka:
+    instance:
+      hostname: localhost
+      prefer-ip-address: true
+    client:
+      register-with-eureka: false
+      fetch-registry: false
+      service-url:
+        defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
 ```
 
 ## 👤 Author
